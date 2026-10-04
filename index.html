@@ -2,26 +2,69 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Pro Hub</title>
+<title>Pro Trading Hub - WOW</title>
 <style>
-body{margin:0;background:#0a0e1a;color:white;font-family:Arial;text-align:center}
-.btn{display:block;padding:18px;border-radius:40px;text-decoration:none;font-weight:bold;margin:10px auto;max-width:400px;color:white}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#060a14;color:white;font-family:Arial;overflow-x:hidden;text-align:center}
+@keyframes glow{0%{box-shadow:0 0 10px #ff3d00}50%{box-shadow:0 0 30px #ff3d00,0 0 60px #ff3d00}100%{box-shadow:0 0 10px #ff3d00}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes slide{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+@keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.05)}100%{transform:scale(1)}}
+.hero{background:linear-gradient(270deg,#ff0000,#ff6a00,#ff0000);background-size:600% 600%;animation:gradient 5s ease infinite;padding:30px;position:relative;overflow:hidden}
+@keyframes gradient{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.ticker{white-space:nowrap;overflow:hidden;background:#000;padding:8px;color:#00ff88;font-family:monospace}
+.ticker span{display:inline-block;animation:slide 20s linear infinite}
+.card{max-width:700px;margin:15px auto;background:rgba(21,26,42,0.9);padding:18px;border-radius:20px;border:1px solid #ff3d00;animation:float 4s ease-in-out infinite}
+.btn{display:block;padding:18px;border-radius:50px;text-decoration:none;font-weight:bold;margin:12px auto;max-width:420px;color:white;animation:glow 2s infinite,pulse 2s infinite;transition:0.3s}
+.btn:hover{transform:scale(1.1)}
+#canvas{width:100%;height:130px;background:#000;border-radius:15px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:15px}
+.mini{background:#1a2340;padding:12px;border-radius:12px;border-left:4px solid #00ff88}
 </style>
 </head>
 <body>
-<h1>📈 PRO TRADING HUB</h1>
-<p>Live: Rise/Fall | Even/Odd | Matches/Differs | Over/Under</p>
+<div class="hero">
+<h1 style="font-size:32px">🔥 WILLISON TRADING HUB 🔥</h1>
+<p>PRO ROBOTS • LIVE SIGNALS • INSTANT M-PESA</p>
+</div>
+<div class="ticker"><span>💹 V100: 1234.56 UP • V75: 987.32 DOWN • Digit: 7 EVEN OVER • Matches: 7 • Deriv Live • Join via Willison Link • 💹 V100: 1234.56 UP • V75: 987.32 DOWN •</span></div>
 
-<a class="btn" style="background:#ff3d00" href="https://t.deriv.link?t=ZKVMXBVCE4P5">📈 JOIN DERIV - RISE & FALL</a>
+<div class="card">
+<canvas id="canvas"></canvas>
+<div id="live" style="font-family:monospace;color:#00ff88;margin:8px 0">CONNECTING LIVE...</div>
+<div class="grid">
+<div class="mini">📈 <b>Rise/Fall</b><br><span id="rf">RISE</span></div>
+<div class="mini" style="border-color:#2962ff">🔢 <b>Even/Odd</b><br><span id="eo">EVEN 8</span></div>
+<div class="mini" style="border-color:#ffab00">🔍 <b>Match/Differ</b><br><span id="md">Match 8</span></div>
+<div class="mini" style="border-color:#ff3d00">📊 <b>Over/Under</b><br><span id="ou">OVER 4</span></div>
+</div>
+</div>
 
-<a class="btn" style="background:#2962ff" href="https://t.deriv.link?t=ZKVMXBVCE4P5">🔢 JOIN DERIV - EVEN & ODD</a>
+<div class="card" style="animation-delay:0.5s">
+<a class="btn" style="background:linear-gradient(90deg,#ff0000,#ff6a00)" href="https://t.deriv.link?t=ZKVMXBVCE4P5">🚀 JOIN DERIV - RISE & FALL</a>
+<a class="btn" style="background:linear-gradient(90deg,#2962ff,#00d4ff);animation-delay:0.3s" href="https://t.deriv.link?t=ZKVMXBVCE4P5">🔢 JOIN - EVEN & ODD</a>
+<a class="btn" style="background:linear-gradient(90deg,#ffab00,#ff6a00);color:black;animation-delay:0.6s" href="https://t.deriv.link?t=ZKVMXBVCE4P5">🔍 JOIN - MATCHES / DIFFERS</a>
+<a class="btn" style="background:linear-gradient(90deg,#00c853,#00ff88);color:black;animation-delay:0.9s" href="https://t.deriv.link?t=ZKVMXBVCE4P5">💰 JOIN - OVER / UNDER + M-PESA DEPOSIT</a>
+<p style="margin-top:15px;color:#25D366">WhatsApp: 0788245106 | Instant Link</p>
+</div>
 
-<a class="btn" style="background:#ffab00;color:black" href="https://t.deriv.link?t=ZKVMXBVCE4P5">🔍 JOIN DERIV - MATCHES & DIFFERS</a>
-
-<a class="btn" style="background:#00c853" href="https://t.deriv.link?t=ZKVMXBVCE4P5">📊 JOIN DERIV - OVER & UNDER</a>
-
-<a class="btn" style="background:white;color:black;border:2px solid #00c853" href="https://t.deriv.link?t=ZKVMXBVCE4P5">💰 DEPOSIT NOW - DIRECT JOIN</a>
-
-<p style="font-size:11px;color:gray">Your referral link: https://t.deriv.link?t=ZKVMXBVCE4P5 - All clicks join through you</p>
+<script>
+let c=document.getElementById('canvas'),x=c.getContext('2d'),pts=[];
+c.width=700;c.height=130;
+for(let i=0;i<50;i++) pts.push(65+Math.sin(i/5)*20+Math.random()*10);
+setInterval(()=>{
+pts.push(pts[pts.length-1]+(Math.random()-0.5)*4);
+if(pts.length>60) pts.shift();
+x.clearRect(0,0,700,130);
+x.beginPath(); x.strokeStyle='#ff3d00'; x.lineWidth=3; x.shadowBlur=15; x.shadowColor='#ff3d00';
+pts.forEach((p,i)=>{let X=i*12,Y=130-p; if(i==0)x.moveTo(X,Y);else x.lineTo(X,Y);}); x.stroke();
+let d=Math.floor(Math.random()*10);
+document.getElementById('live').innerHTML=`🔴 LIVE V100: ${pts[pts.length-1].toFixed(2)} | Digit ${d} | ${new Date().toLocaleTimeString()}`;
+document.getElementById('rf').innerText=d>5?'🔼 RISE':'🔽 FALL';
+document.getElementById('eo').innerText=(d%2==0?'EVEN ':'ODD ')+d;
+document.getElementById('md').innerText='Match '+d;
+document.getElementById('ou').innerText=(d>4?'OVER 4 - '+d:'UNDER 4 - '+d);
+},200);
+</script>
 </body>
   </html>
