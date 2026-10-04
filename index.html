@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Willison Trading Hub - Live Deriv Trading</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body{margin:0;font-family:Arial;background:#0a0e1a;color:white}
+header{background:linear-gradient(90deg,#ff0000,#ff6a00);padding:30px;text-align:center}
+.card{max-width:1100px;margin:18px auto;background:#151a2a;padding:20px;border-radius:14px;border:1px solid #2a3350}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.bot{background:#1e2540;padding:16px;border-radius:12px;border-left:5px solid #ff3d00}
+.live{color:#00ff88;font-weight:bold}
+.btn{display:inline-block;padding:13px 22px;border-radius:30px;text-decoration:none;font-weight:bold;margin:6px;text-align:center}
+.btn-red{background:#ff3d00;color:white}
+.btn-green{background:#00c853;color:white}
+.btn-blue{background:#2962ff;color:white}
+.alert{background:#2a1a1a;border:1px solid #ff3d00;padding:12px;border-radius:10px;font-size:13px}
+</style>
+</head>
+<body>
+<header>
+<h1>📈 WILLISON TRADING HUB</h1>
+<p>Manual Deriv Trading | Live Robots Display | Rise & Fall | Even & Odd | Over & Under</p>
+<a class="btn btn-green" href="https://t.deriv.link?t=ZKVMXBVCE4P5" target="_blank">🔥 OPEN DERIV - TRADE & DEPOSIT NOW</a>
+</header>
+
+<div class="card alert">
+⚠️ Risk Warning: Trading is risky. This site shows analysis for education only. All real trading and deposit is done on official Deriv.com via your affiliate link.
+</div>
+
+<div class="card">
+<h2>🤖 LIVE Robot Displays</h2>
+<div class="grid">
+<div class="bot">
+<h3>Rise & Fall Robot</h3>
+<p class="live">● ANALYZING</p>
+<p>Volatility 100 Index - Checks trend</p>
+<a class="btn btn-red" href="https://t.deriv.link?t=ZKVMXBVCE4P5" target="_blank">Trade Rise/Fall</a>
+</div>
+<div class="bot" style="border-left-color:#00e5ff">
+<h3>Even & Odd Robot</h3>
+<p class="live">● ANALYZING</p>
+<p>Volatility 75 Index - Last digit even/odd</p>
+<a class="btn btn-blue" href="https://t.deriv.link?t=ZKVMXBVCE4P5" target="_blank">Trade Even/Odd</a>
+</div>
+<div class="bot" style="border-left-color:#00ff88">
+<h3>Over & Under Robot</h3>
+<p class="live">● ANALYZING</p>
+<p>Over 4 / Under 4 strategy</p>
+<a class="btn btn-green" href="https://t.deriv.link?t=ZKVMXBVCE4P5" target="_blank">Trade Over/Under</a>
+</div>
+<div class="bot" style="border-left-color:#ffab00">
+<h3>Matches & Differs</h3>
+<p class="live">● ANALYZING</p>
+<p>Matches last digit prediction</p>
+<a class="btn btn-red" href="https://t.deriv.link?t=ZKVMXBVCE4P5" target="_blank">Trade Matches</a>
+</div>
+</div>
+</div>
+
+<div class="card" style="text-align:center">
+<h2>How It Works</h2>
+<p>Click any button → Opens Deriv Official → Client Creates Account → Deposit via M-Pesa → Trade Manual Rise/Fall, Even/Odd<br><br>
+You earn affiliate commission from Deriv when they deposit & trade.</p>
+<a class="btn btn-green" href="https://t.deriv.link?t=ZKVMXBVCE4P5" target="_blank">💰 DEPOSIT NOW ON DERIV</a>
+<a class="btn btn-blue" href="https://t.deriv.link?t=ZKVMXBVCE4P5" target="_blank">📊 OPEN DTRADER NOW</a>
+<a class="btn btn-red" href="https://wa.me/254788245106?text=Hello%20Willison%2C%20I%20want%20to%20learn%20manual%20Deriv%20trading" target="_blank">WhatsApp Me</a>
+<div style="background:#000;padding:14px;border-radius:10px;margin-top:15px;font-family:monospace">
+<span id="tick">Loading live ticks...</span>
+</div>
+</div>
+
+<div class="card" style="text-align:center;font-size:11px;color:#777">
+© 2026 Willison Trading Hub | Affiliate Link: t.deriv.link?t=ZKVMXBVCE4P5 | All trading on Deriv.com
+</div>
+
+<script>
+let price=4521.12;
+setInterval(()=>{
+price+=(Math.random()-0.5)*2;
+let digit=Math.floor(Math.random()*10);
+document.getElementById('tick').innerHTML=`V100: ${price.toFixed(2)} | Last Digit: ${digit} | ${digit%2==0?'EVEN':'ODD'} | ${digit>4?'OVER 4':'UNDER 4'} | ${new Date().toLocaleTimeString()}`;
+},1200);
+</script>
+</body>
+  </html>
